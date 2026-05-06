@@ -42,6 +42,99 @@ body::before {
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.85), transparent);
 }
 
+.cosmos {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cosmos__grid,
+.cosmos__glow,
+.cosmos__ring,
+.cosmos__beam,
+.cosmos__stars {
+  position: absolute;
+  inset: 0;
+}
+
+.cosmos__grid {
+  background-image:
+    linear-gradient(rgba(118, 217, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 217, 255, 0.05) 1px, transparent 1px);
+  background-size: 110px 110px;
+  transform: perspective(900px) rotateX(77deg) translateY(22vh) scale(1.25);
+  transform-origin: top center;
+  opacity: 0.35;
+  animation: grid-drift 18s linear infinite;
+}
+
+.cosmos__glow {
+  filter: blur(70px);
+  opacity: 0.45;
+}
+
+.cosmos__glow--left {
+  inset: 10% auto auto -10%;
+  width: 28rem;
+  height: 28rem;
+  background: radial-gradient(circle, rgba(118, 217, 255, 0.28), transparent 68%);
+  animation: glow-float 14s ease-in-out infinite;
+}
+
+.cosmos__glow--right {
+  inset: 35% -8% auto auto;
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, rgba(119, 243, 182, 0.24), transparent 70%);
+  animation: glow-float 16s ease-in-out infinite reverse;
+}
+
+.cosmos__ring {
+  border: 1px solid rgba(118, 217, 255, 0.13);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 24px rgba(118, 217, 255, 0.08));
+}
+
+.cosmos__ring--one {
+  inset: 12% auto auto 62%;
+  width: 28rem;
+  height: 28rem;
+  animation: spin-slow 24s linear infinite;
+}
+
+.cosmos__ring--two {
+  inset: 48% auto auto 6%;
+  width: 18rem;
+  height: 18rem;
+  border-color: rgba(119, 243, 182, 0.14);
+  animation: spin-slow 18s linear infinite reverse;
+}
+
+.cosmos__beam {
+  inset: 0;
+  background:
+    linear-gradient(125deg, transparent 30%, rgba(118, 217, 255, 0.08) 48%, transparent 66%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.015));
+  mix-blend-mode: screen;
+  animation: beam-shift 10s ease-in-out infinite;
+}
+
+.cosmos__star {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 14px rgba(118, 217, 255, 0.5);
+  opacity: 0.25;
+  animation: star-pulse var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -69,6 +162,8 @@ h3 {
 }
 
 .app-shell {
+  position: relative;
+  z-index: 1;
   width: min(calc(100% - 32px), 1180px);
   margin: 0 auto;
   padding-bottom: 72px;
@@ -313,6 +408,61 @@ h3 {
   font-weight: 700;
 }
 
+@keyframes grid-drift {
+  0% {
+    transform: perspective(900px) rotateX(77deg) translateY(22vh) scale(1.25) translateX(0);
+  }
+  50% {
+    transform: perspective(900px) rotateX(77deg) translateY(20vh) scale(1.25) translateX(-2%);
+  }
+  100% {
+    transform: perspective(900px) rotateX(77deg) translateY(22vh) scale(1.25) translateX(0);
+  }
+}
+
+@keyframes glow-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2.5%, -3%, 0) scale(1.08);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes beam-shift {
+  0%,
+  100% {
+    transform: translateX(-8%);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateX(8%);
+    opacity: 0.75;
+  }
+}
+
+@keyframes star-pulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.6);
+  }
+}
+
 @media (max-width: 980px) {
   .hero,
   .split,
@@ -331,6 +481,24 @@ h3 {
 }
 
 @media (max-width: 760px) {
+  .cosmos__grid {
+    background-size: 84px 84px;
+    opacity: 0.24;
+  }
+
+  .cosmos__ring--one {
+    width: 18rem;
+    height: 18rem;
+    left: 58%;
+  }
+
+  .cosmos__ring--two {
+    width: 12rem;
+    height: 12rem;
+    left: 2%;
+    top: 62%;
+  }
+
   .app-shell {
     width: min(calc(100% - 20px), 1180px);
   }

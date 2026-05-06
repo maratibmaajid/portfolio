@@ -76,195 +76,220 @@ const strengths = [
 
 function App() {
   return (
-    <div className="app-shell">
-      <header className="site-header">
-        <a className="brand" href="#top">
-          MM
-        </a>
-        <nav className="site-nav" aria-label="Primary">
-          {navItems.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
+    <>
+      <div className="cosmos" aria-hidden="true">
+        <div className="cosmos__grid"></div>
+        <div className="cosmos__glow cosmos__glow--left"></div>
+        <div className="cosmos__glow cosmos__glow--right"></div>
+        <div className="cosmos__ring cosmos__ring--one"></div>
+        <div className="cosmos__ring cosmos__ring--two"></div>
+        <div className="cosmos__beam"></div>
+        <div className="cosmos__stars">
+          {Array.from({ length: 18 }).map((_, index) => (
+            <span
+              key={index}
+              className="cosmos__star"
+              style={{
+                "--x": `${(index * 17) % 100}%`,
+                "--y": `${(index * 29) % 100}%`,
+                "--delay": `${(index % 7) * 0.8}s`,
+                "--duration": `${8 + (index % 5)}s`
+              }}
+            />
           ))}
-        </nav>
-      </header>
+        </div>
+      </div>
 
-      <main id="top">
-        <section className="hero">
-          <div className="hero-copy">
-            <p className="eyebrow">Electrical Engineering • Data Analytics • ML</p>
-            <h1>Maratib Maajid builds thoughtful technical work and leads with momentum.</h1>
-            <p className="hero-text">
-              B.Tech student at National Institute of Technology Srinagar with experience across
-              data analysis, machine learning, power systems exposure, and event leadership.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#contact">
-                Get in touch
+      <div className="app-shell">
+        <header className="site-header">
+          <a className="brand" href="#top">
+            MM
+          </a>
+          <nav className="site-nav" aria-label="Primary">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href}>
+                {item.label}
               </a>
-              <a
-                className="button button-secondary"
-                href={`${import.meta.env.BASE_URL}assets/resume/Maratib-Maajid-Resume.pdf`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View resume
-              </a>
-            </div>
-          </div>
-
-          <aside className="hero-panel">
-            <article>
-              <span>Focus</span>
-              <strong>Machine learning, analytics, and applied problem-solving</strong>
-            </article>
-            <article>
-              <span>Education</span>
-              <strong>B.Tech in Electrical Engineering, expected June 2027</strong>
-            </article>
-            <article>
-              <span>Current strength</span>
-              <strong>Combining technical skill with communication and coordination</strong>
-            </article>
-          </aside>
-        </section>
-
-        <section className="section split" id="about">
-          <div className="section-heading">
-            <p className="eyebrow">Profile</p>
-            <h2>Technical curiosity backed by real execution</h2>
-          </div>
-          <div className="section-body">
-            <p>
-              Maratib is a highly motivated Electrical Engineering student at NIT Srinagar with a
-              strong interest in data analytics, machine learning, and practical systems work. He
-              brings clear communication, team coordination, and leadership into technical spaces.
-            </p>
-            <p>
-              His work spans data analysis with Python, interactive visualization, exposure to
-              power systems operations, and project work in control-oriented engineering contexts.
-            </p>
-          </div>
-        </section>
-
-        <section className="section" id="experience">
-          <div className="section-heading">
-            <p className="eyebrow">Experience</p>
-            <h2>Internships across data, systems, and engineering practice</h2>
-          </div>
-          <div className="stack">
-            {experience.map((item) => (
-              <article className="card" key={`${item.role}-${item.org}`}>
-                <div className="card-top">
-                  <div>
-                    <h3>{item.role}</h3>
-                    <p>{item.org}</p>
-                  </div>
-                  <span>{item.period}</span>
-                </div>
-                <p>{item.summary}</p>
-              </article>
             ))}
-          </div>
-        </section>
+          </nav>
+        </header>
 
-        <section className="section" id="projects">
-          <div className="section-heading">
-            <p className="eyebrow">Projects</p>
-            <h2>Data storytelling with interactive output</h2>
-          </div>
-          <article className="feature-card">
-            <div>
-              <h3>Global Cancer Data Analysis & Visualization</h3>
+        <main id="top">
+          <section className="hero">
+            <div className="hero-copy">
+              <p className="eyebrow">Electrical Engineering • Data Analytics • ML</p>
+              <h1>Maratib Maajid builds thoughtful technical work and leads with momentum.</h1>
+              <p className="hero-text">
+                B.Tech student at National Institute of Technology Srinagar with experience across
+                data analysis, machine learning, power systems exposure, and event leadership.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#contact">
+                  Get in touch
+                </a>
+                <a
+                  className="button button-secondary"
+                  href={`${import.meta.env.BASE_URL}assets/resume/Maratib-Maajid-Resume.pdf`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View resume
+                </a>
+              </div>
+            </div>
+
+            <aside className="hero-panel">
+              <article>
+                <span>Focus</span>
+                <strong>Machine learning, analytics, and applied problem-solving</strong>
+              </article>
+              <article>
+                <span>Education</span>
+                <strong>B.Tech in Electrical Engineering, expected June 2027</strong>
+              </article>
+              <article>
+                <span>Current strength</span>
+                <strong>Combining technical skill with communication and coordination</strong>
+              </article>
+            </aside>
+          </section>
+
+          <section className="section split" id="about">
+            <div className="section-heading">
+              <p className="eyebrow">Profile</p>
+              <h2>Technical curiosity backed by real execution</h2>
+            </div>
+            <div className="section-body">
               <p>
-                Conducted end-to-end analysis of a global dataset, identified demographic and
-                regional trends, and built an interactive Streamlit web app for visualization.
+                Maratib is a highly motivated Electrical Engineering student at NIT Srinagar with a
+                strong interest in data analytics, machine learning, and practical systems work. He
+                brings clear communication, team coordination, and leadership into technical spaces.
+              </p>
+              <p>
+                His work spans data analysis with Python, interactive visualization, exposure to
+                power systems operations, and project work in control-oriented engineering contexts.
               </p>
             </div>
-            <div className="chips">
-              <span>Python</span>
-              <span>Streamlit</span>
-              <span>EDA</span>
-              <span>Visualization</span>
-            </div>
-          </article>
-        </section>
+          </section>
 
-        <section className="section split" id="skills">
-          <div>
+          <section className="section" id="experience">
             <div className="section-heading">
-              <p className="eyebrow">Skills</p>
-              <h2>Strong analytical base with practical tooling</h2>
-            </div>
-            <div className="chips">
-              {skills.map((skill) => (
-                <span key={skill}>{skill}</span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="section-heading">
-              <p className="eyebrow">Certifications</p>
-              <h2>Focused learning in ML and analytics</h2>
+              <p className="eyebrow">Experience</p>
+              <h2>Internships across data, systems, and engineering practice</h2>
             </div>
             <div className="stack">
-              {certifications.map((item) => (
-                <article className="list-card" key={item}>
-                  {item}
+              {experience.map((item) => (
+                <article className="card" key={`${item.role}-${item.org}`}>
+                  <div className="card-top">
+                    <div>
+                      <h3>{item.role}</h3>
+                      <p>{item.org}</p>
+                    </div>
+                    <span>{item.period}</span>
+                  </div>
+                  <p>{item.summary}</p>
                 </article>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="section split" id="leadership">
-          <div>
+          <section className="section" id="projects">
             <div className="section-heading">
-              <p className="eyebrow">Leadership</p>
-              <h2>Campus roles built around coordination and visibility</h2>
+              <p className="eyebrow">Projects</p>
+              <h2>Data storytelling with interactive output</h2>
             </div>
-            <div className="stack">
-              {leadership.map((item) => (
-                <article className="list-card" key={item}>
-                  {item}
-                </article>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div className="section-heading">
-              <p className="eyebrow">Strengths & Interests</p>
-              <h2>People skills with a systems mindset</h2>
-            </div>
-            <div className="stack">
-              {strengths.map((item) => (
-                <article className="list-card" key={item}>
-                  {item}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
+            <article className="feature-card">
+              <div>
+                <h3>Global Cancer Data Analysis & Visualization</h3>
+                <p>
+                  Conducted end-to-end analysis of a global dataset, identified demographic and
+                  regional trends, and built an interactive Streamlit web app for visualization.
+                </p>
+              </div>
+              <div className="chips">
+                <span>Python</span>
+                <span>Streamlit</span>
+                <span>EDA</span>
+                <span>Visualization</span>
+              </div>
+            </article>
+          </section>
 
-      <footer className="section footer" id="contact">
-        <div className="section-heading">
-          <p className="eyebrow">Contact</p>
-          <h2>Open to internships, collaboration, and meaningful problem-solving</h2>
-        </div>
-        <div className="contact-grid">
-          <a href="mailto:maratib32@gmail.com">maratib32@gmail.com</a>
-          <a href="tel:+917889869893">+91 78898 69893</a>
-          <a href="https://www.linkedin.com/in/maratib-maajid-19a7bb267/" target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a href="https://github.com/maratibmaajid" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-        </div>
-      </footer>
-    </div>
+          <section className="section split" id="skills">
+            <div>
+              <div className="section-heading">
+                <p className="eyebrow">Skills</p>
+                <h2>Strong analytical base with practical tooling</h2>
+              </div>
+              <div className="chips">
+                {skills.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="section-heading">
+                <p className="eyebrow">Certifications</p>
+                <h2>Focused learning in ML and analytics</h2>
+              </div>
+              <div className="stack">
+                {certifications.map((item) => (
+                  <article className="list-card" key={item}>
+                    {item}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="section split" id="leadership">
+            <div>
+              <div className="section-heading">
+                <p className="eyebrow">Leadership</p>
+                <h2>Campus roles built around coordination and visibility</h2>
+              </div>
+              <div className="stack">
+                {leadership.map((item) => (
+                  <article className="list-card" key={item}>
+                    {item}
+                  </article>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="section-heading">
+                <p className="eyebrow">Strengths & Interests</p>
+                <h2>People skills with a systems mindset</h2>
+              </div>
+              <div className="stack">
+                {strengths.map((item) => (
+                  <article className="list-card" key={item}>
+                    {item}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer className="section footer" id="contact">
+          <div className="section-heading">
+            <p className="eyebrow">Contact</p>
+            <h2>Open to internships, collaboration, and meaningful problem-solving</h2>
+          </div>
+          <div className="contact-grid">
+            <a href="mailto:maratib32@gmail.com">maratib32@gmail.com</a>
+            <a href="tel:+917889869893">+91 78898 69893</a>
+            <a href="https://www.linkedin.com/in/maratib-maajid-19a7bb267/" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href="https://github.com/maratibmaajid" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
 
